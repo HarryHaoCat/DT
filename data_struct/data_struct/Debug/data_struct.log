@@ -1,0 +1,6 @@
+﻿  Bintree.c
+c:\users\sky\source\repos\data_struct\data_struct\bintree.c(4): warning C4067: 预处理器指令后有意外标记 - 应输入换行符
+c:\users\sky\source\repos\data_struct\data_struct\bintree.c(17): warning C4047: “=”:“BinTree”与“BinTree *”的间接级别不同
+c:\users\sky\source\repos\data_struct\data_struct\bintree.c(37): warning C4029: 声明的形参表不同于定义
+c:\users\sky\source\repos\data_struct\data_struct\bintree.c(47): warning C4029: 声明的形参表不同于定义
+  data_struct.vcxproj -> C:\Users\Sky\source\repos\data_struct\Debug\data_struct.exe
