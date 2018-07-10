@@ -11,7 +11,7 @@ typedef struct {
 	int Last;   //最后一个位置的索引
 	int len;
 }List;
-List* MakeEmpty();    //创建一个空的列表 
+List* CreateList();    //创建一个空的列表 
 void Insert(ElementType X, int i, List* Ptrl); //在顺序链表的某一个i位置插入一个元素
 int Search(ElementType X, List* Ptrl);
 void traverse(List* Ptrl);

@@ -19,7 +19,7 @@ void Enqueue(Lqueue* lq, 	ElementType item)
 	//assert(lq->size <= MAXSIZE, "¶ÓÁÐÒÑÂú£¡\n");
 	lq->rear->Next = (qnode*)malloc(sizeof(qnode));
 	lq->rear = lq->rear->Next;
-	lq->rear->Data = item
+	lq->rear->Data = item;
 	lq->rear->Next = NULL;
 	lq->size++;
 	printf("%d Enqueue success!\n",item);

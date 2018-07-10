@@ -14,7 +14,7 @@ Clist* Clinsert(ElementType X, int i, Clist* Ptrl) //按照定位序号插入
 {
 	if (i < 1)
 	{
-		printf("位置非法");
+		printf("illegal!");
 	}
 	if (i == 1)
 	{
@@ -22,7 +22,7 @@ Clist* Clinsert(ElementType X, int i, Clist* Ptrl) //按照定位序号插入
 		s->Data = X;
 		s->Next = Ptrl->Next;
 		Ptrl->Next = s;
-		printf("插入成功!!\n");
+		printf("insertion success!!\n");
 		//Ptrl = NULL;
 		return Ptrl;
 	}
@@ -38,7 +38,7 @@ Clist* Clinsert(ElementType X, int i, Clist* Ptrl) //按照定位序号插入
 		s->Data = X;
 		s->Next = l->Next;
 		l->Next = s;
-		printf("插入成功！\n");
+		printf("Instersion success!\n");
 		return Ptrl;
 	}
 }
@@ -65,7 +65,7 @@ Clist* Clfind(ElementType X, Clist *Ptrl)	 //按值查找
 	{
 		if (p->Next == NULL)
 		{
-			printf("没有此元素！");
+			printf("There is no such element!\n");
 			break;
 		}
 		p = p->Next;
@@ -83,7 +83,7 @@ void Cldelete(int i, Clist *Ptrl)   //删除指定位序元素
 	s = p->Next;
 	p->Next = p->Next->Next;
 	free(s);
-	printf("删除成功！");
+	printf("Deletion success!\n");
 
 }
 

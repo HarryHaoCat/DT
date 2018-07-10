@@ -5,13 +5,13 @@
 #include"List.h"
 
 
-List* MakeEmpty()
+List* CreateList()
 {
-	List *Ptrl = (List*)malloc(sizeof(List));
-	Ptrl->array = (ElementType*)malloc(MAXSIZE * sizeof(ElementType));  
-	Ptrl->Last = -1; 
-	Ptrl->len = MAXSIZE; 
-	return Ptrl;
+	List *Ptrl = (List*)malloc(sizeof(List));      //申请一个顺序表型的结点
+	Ptrl->array = (ElementType*)malloc(MAXSIZE * sizeof(ElementType));//表的数组结点指向一个新申请的数组地址  
+	Ptrl->Last = -1;          //Last指针指向最后一个元素
+	Ptrl->len = MAXSIZE;      // 长度初始化为MAXSIZE
+	return Ptrl;              //返回表的指针
 }
 //Insertion
 void Insert(ElementType data, int i, List* Ptrl)

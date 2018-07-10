@@ -12,5 +12,5 @@ Clist* FindKth(int K, Clist* Ptrl);			//返回第K个指针,没有就返回NULL
 Clist* Clfind(ElementType X, Clist *Ptrl);	//按值查找
 Clist* Clinsert(ElementType X, int i, Clist* Ptrl); //按照定位序号插入
 void Cldelete(int i, Clist *Ptrl);			//删除指定位序元素
-void PrintNode(Clist* Ptrl);                 //打印链表         
+void PrintNode(Clist* PtrS);                //打印链表
 #endif

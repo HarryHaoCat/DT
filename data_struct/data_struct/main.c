@@ -1,43 +1,47 @@
 #include<stdio.h>
 #include<stdlib.h>
 //#include"Lstack.h"
-#include"List.h"
+//#include"List.h"
 //#include"Chain_List.h"
 //#include"stack.h"
 //#include"Lqueue.h"
-//#include"Bintree.h"
+#include"Bintree.h"
 
 
 
 int main()
 {
+    /*
 	List *p;
 	int cur = 0;
-	p = MakeEmpty();
-	for (int t = 0; t < 10000; t++)
+	p = CreateList();
+	for (int t = 0; t < 8888; t++)
 	{
 		Insert(t, t, p);
 	}
-	cur = Search(66, p);
+    Insert(123, 0, p);
+    Insert(23,1, p);
+    cur = Search(66, p);
 	if (cur != -1)
 		printf("can't find the element!\n");
 	traverse(p);
 	Delete(10, p);
 	printf("The length is:%d\n", Len(p));
 	Remove(p);
-
+*/
 	//单向链表
-	/*Clist *p;
-	p = CreateNode();
-	p = Clinsert( 6, 1, p);
-	p = Clinsert( 16, 2, p);
-	p = Clinsert( 22, 3, p);
+/*	Clist *p;
+    p = CreateNode();
+	for(int i = 0; i< 1000; i++)
+    {
+        p = Clinsert(i, i+1, p);
+    }
 	printf("%d   %p\n",p->Next->Next->Data, p->Next->Next);
-	printf("第二个位置的指针%p\n", FindKth(2,p));
-	printf("元素%d位置的地址为%p\n", 10, Clfind(10, p));
+	printf("The adress of the second index is:%p\n", FindKth(2,p));
+	printf("The address of %d is:%p\n", 10, Clfind(10, p));
 	Cldelete(1, p);
-	PrintNode(p);*/
-
+	PrintNode(p);
+*/
 	//顺序栈
 	/*Stack* p = CreateStack();
 	for (int i = 0; i < 1500; i++)
@@ -73,16 +77,17 @@ int main()
 	ClearLstack(p);
 */
 	//链队
-	/*Lqueue* lq = QueueCreate();
-	Enqueue(lq, 10);
-	Enqueue(lq, 12);
-	Enqueue(lq, &11);
-	Enqueue(lq, &45);
+    /*
+	Lqueue* lq = QueueCreate();
+    for(int i = 0; i<1000; i++)
+    {
+        Enqueue(lq, i);
+    }
 	Dequeue(lq);
-	PrintEqueue(lq);*/
-
+	PrintEqueue(lq);
+*/
 	//二叉树
-	/*int level = 1;
+	int level = 1;
 	BinTree* t = (BinTree*)malloc(sizeof(BitNode));
 	CreateBinTree(t);
 	printf("Construct tree succeed!\n");
@@ -92,6 +97,6 @@ int main()
 	InOrderTraverse(*t);
 	printf("PostOderTraverse:\n");
 	PostOrderTraverse(*t);
-	system("pause");*/
+	system("pause");
 	return 0;
 }
