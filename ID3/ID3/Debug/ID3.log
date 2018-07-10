@@ -1,0 +1,5 @@
+﻿  ID3.c
+c:\users\sky\source\repos\id3\id3\id3.c(746): warning C4474: printf: 格式字符串中传递的参数太多
+  c:\users\sky\source\repos\id3\id3\id3.c(746): note: 占位符和其参数预计 0 可变参数，但提供的却是 1 参数
+c:\users\sky\source\repos\id3\id3\id3.c(843): warning C4013: “system”未定义；假设外部返回 int
+  ID3.vcxproj -> C:\Users\Sky\source\repos\ID3\Debug\ID3.exe
