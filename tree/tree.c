@@ -131,8 +131,8 @@ double calEntropy(TRAINING* head)
         num++;
         p = p->next;
     }
-    printf("play/num = %f, not_play/num= %f", (double)(play/num), (double)(not_play/num));
-    printf("num = %f\n", num);
+ //   printf("play/num = %f, not_play/num= %f", (double)(play/num), (double)(not_play/num));
+ //   printf("num = %f\n", num);
     return Entropy((double)(play/num), (double)(not_play/num));
 
 }
@@ -140,8 +140,8 @@ double calEntropy(TRAINING* head)
 //计算某个属性的信息熵,选取最好的划分属性
 int choseBestFeature(TRAINING* p)
 {
-    double max1 = 0.0, max2 = 0.0, max3 = 0.0, max4 = 0.0; 
-    if(p->outLook)
+    double max1 =100.0, max2 = 100.0, max3 = 100.0, max4 = 100.0; 
+    if(p->outLook != 0)
     {
         TRAINING* sunny = splitData(OUTLOOK, SUNNY, p);
         TRAINING* rain = splitData(OUTLOOK, RAIN, p);
@@ -149,7 +149,7 @@ int choseBestFeature(TRAINING* p)
         max1 = calEntropy(sunny) + calEntropy(rain) + calEntropy(voercast);
     }
 
-    if(p->temperature)
+    if(p->temperature != 0)
     {
         TRAINING* high_temperature = splitData(TEMPERATURE, HIGH_TEMPERATURE, p);
         TRAINING* mid = splitData(TEMPERATURE, MID_TEMPERATURE, p);
@@ -157,22 +157,23 @@ int choseBestFeature(TRAINING* p)
         max2 = calEntropy(high_temperature) + calEntropy(mid) + calEntropy(cold);
     }
 
-    if(p->humidity)
+    if(p->humidity != 0)
     {
         TRAINING* high_temperature = splitData(HUMIDITY, HIGH_HUMIDITY, p);
         TRAINING* normal = splitData(HUMIDITY, NORMAL_HUMIDITY, p);
         max3 = calEntropy(high_temperature) + calEntropy(normal);
     }
  
-    if(p->windy)
+    if(p->windy != 0)
     {
         TRAINING* wind = splitData(WINDY, WIND, p);
         TRAINING* no_wind = splitData(WINDY, NO_WIND, p);
         max4 = calEntropy(wind) + calEntropy(no_wind);
     }
-    int m1 = max1>max2?OUTLOOK:TEMPERATURE;
-    int m2 = max3>max4?HUMIDITY:WINDY;
-    return m1>m2?m1:m2; 
+    printf("outlook = %f, temp = %f, hum = %f, wind = %f\n",max1,max2,max3,max4);
+    int m1 = max1<max2?OUTLOOK:TEMPERATURE;
+    int m2 = max3<max4?HUMIDITY:WINDY;
+    return m1<m2?m1:m2; 
 }
 
 double log2(double x)
@@ -193,24 +194,24 @@ int main()
 {
  TRAINING trainingSet[TRAINING_NUMBER] =
 {
-{ SUNNY   ,HIGH_TEMPERATURE,HIGH_HUMIDITY,NO_WIND,NOT_PLAY,NULL },
-{ SUNNY   ,HIGH_TEMPERATURE,HIGH_HUMIDITY,WIND ,NOT_PLAY,NULL },
-{ VOERCAST,HIGH_TEMPERATURE,NORMAL_HUMIDITY,NO_WIND,CAN_PLAY,NULL },
-{ RAIN    ,MID_TEMPERATURE,HIGH_HUMIDITY,NO_WIND,CAN_PLAY,NULL },
-{ RAIN    ,COLD_TEMPERATURE,NORMAL_HUMIDITY,NO_WIND,CAN_PLAY,NULL },
-{ RAIN    ,COLD_TEMPERATURE,NORMAL_HUMIDITY,WIND ,NOT_PLAY,NULL },
-{ VOERCAST,COLD_TEMPERATURE,NORMAL_HUMIDITY,WIND ,CAN_PLAY,NULL },
-{ SUNNY   ,MID_TEMPERATURE,HIGH_HUMIDITY,NO_WIND,NOT_PLAY,NULL },
-{ SUNNY   ,COLD_TEMPERATURE,NORMAL_HUMIDITY,NO_WIND,CAN_PLAY,NULL },
-{ RAIN    ,MID_TEMPERATURE,NORMAL_HUMIDITY,NO_WIND,CAN_PLAY,NULL },
-{ SUNNY   ,MID_TEMPERATURE,NORMAL_HUMIDITY,WIND ,CAN_PLAY,NULL },
-{ VOERCAST,MID_TEMPERATURE,HIGH_HUMIDITY,WIND ,CAN_PLAY,NULL },
-{ VOERCAST,HIGH_TEMPERATURE,NORMAL_HUMIDITY,NO_WIND,CAN_PLAY,NULL },
-{ RAIN    ,MID_TEMPERATURE,NORMAL_HUMIDITY,WIND ,NOT_PLAY,NULL }
+{ SUNNY   ,HIGH_TEMPERATURE, HIGH_HUMIDITY,   NO_WIND, NOT_PLAY, NULL },
+{ SUNNY   ,HIGH_TEMPERATURE, HIGH_HUMIDITY,   WIND ,   NOT_PLAY, NULL },
+{ VOERCAST,HIGH_TEMPERATURE, HIGH_HUMIDITY,   NO_WIND, CAN_PLAY, NULL },
+{ RAIN    ,MID_TEMPERATURE,  HIGH_HUMIDITY,   NO_WIND, CAN_PLAY, NULL },
+{ RAIN    ,COLD_TEMPERATURE, NORMAL_HUMIDITY, NO_WIND, CAN_PLAY, NULL },
+{ RAIN    ,COLD_TEMPERATURE, NORMAL_HUMIDITY, WIND ,   NOT_PLAY, NULL },
+{ VOERCAST,COLD_TEMPERATURE, NORMAL_HUMIDITY, WIND ,   CAN_PLAY, NULL },
+{ SUNNY   ,MID_TEMPERATURE,  HIGH_HUMIDITY,   NO_WIND, NOT_PLAY, NULL },
+{ SUNNY   ,COLD_TEMPERATURE, NORMAL_HUMIDITY, NO_WIND, CAN_PLAY, NULL },
+{ RAIN    ,MID_TEMPERATURE,  NORMAL_HUMIDITY, NO_WIND, CAN_PLAY, NULL },
+{ SUNNY   ,MID_TEMPERATURE,  NORMAL_HUMIDITY, WIND ,   CAN_PLAY, NULL },
+{ VOERCAST,MID_TEMPERATURE,  HIGH_HUMIDITY,   WIND ,   CAN_PLAY, NULL },
+{ VOERCAST,HIGH_TEMPERATURE, NORMAL_HUMIDITY, NO_WIND, CAN_PLAY, NULL },
+{ RAIN    ,MID_TEMPERATURE,  HIGH_HUMIDITY,   WIND ,   NOT_PLAY, NULL }
 };
  TRAINING* head =  trainingInit(trainingSet);
- TRAINING* sub = splitData(TEMPERATURE, MID_TEMPERATURE, head); 
- printf("信息熵为%f\n", calEntropy(sub));
- //printf("最好的划分为%d\n", choseBestFeature(sub));
+ TRAINING* sub = splitData(WINDY,NO_WIND, head); 
+ printf("信息熵为%f\n", calEntropy(head));
+ printf("最好的划分为%d\n", choseBestFeature(sub));
     return 0;
 }
