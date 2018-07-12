@@ -7,7 +7,7 @@
 
 #ifndef _TREE_H_
 #define _TREE_H_
-#define NOTHING 10
+#define NOTHING 111
 //天气值域
 #define SUNNY     11
 #define VOERCAST     12
@@ -62,14 +62,14 @@ int attribute;
 struct TREE *left;
 struct TREE *mid;
 struct TREE *right;
-}TREE;
+}TREENODE, *TREE;
 //TRAINING *trainHead;
 SET *noClassSetHead;
 //TREE *treeT;
 
 
 //非类集合和类集合
-int noClassSet[4] = { OUTLOOK,TEMPERATURE,HUMIDITY,WINDY };
+int labels[4] = { OUTLOOK,TEMPERATURE,HUMIDITY,WINDY };
 int classSet[2] = { CAN_PLAY,NOT_PLAY };
 
 //初始化训练数据的结构体
